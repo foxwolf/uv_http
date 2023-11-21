@@ -3,6 +3,8 @@ function(cat IN_FILE OUT_FILE)
     file(APPEND ${OUT_FILE} "${CONTENTS}")
 endfunction(cat IN_FILE OUT_FILE)
 
+# set(CMAKE_C_FLAGS "-Werror -Werror=return-type -fPIC -O3 -Wformat=2 -Wno-format-nonliteral -Wno-format-truncation -Wno-format-y2k")
+
 set(CONTRIB_DEPS_DOWNLOAD "${SDWL_CONTRIB_DIR}/deps-download/CMakeLists.txt")
 set(CONTRIB_TMP_FILE "${CMAKE_BINARY_DIR}/deps_tmp_CMakeLists.txt.in")
 
@@ -17,5 +19,7 @@ execute_process(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
 execute_process(COMMAND "${CMAKE_COMMAND}" --build .
         WORKING_DIRECTORY "${SDWL_CONTRIB_DIR}/deps-download")
 
+message("~~~~ ${SDWL_CONTRIB_DIR}")
+# add_subdirectory(libuv)
 add_subdirectory(libuv EXCLUDE_FROM_ALL)
 
