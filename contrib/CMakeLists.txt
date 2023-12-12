@@ -22,7 +22,6 @@ execute_process(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
 execute_process(COMMAND "${CMAKE_COMMAND}" --build .
         WORKING_DIRECTORY "${SDWL_CONTRIB_DIR}/deps-download")
 
-message("~~~~ ${SDWL_CONTRIB_DIR}")
 add_subdirectory(libuv)
 # add_subdirectory(libuv EXCLUDE_FROM_ALL)
 
