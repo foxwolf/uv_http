@@ -3,16 +3,12 @@ function(cat IN_FILE OUT_FILE)
     file(APPEND ${OUT_FILE} "${CONTENTS}")
 endfunction(cat IN_FILE OUT_FILE)
 
-
-message("~~~~~contrib CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
-
-# set(CMAKE_C_FLAGS "-Werror -Werror=return-type -fPIC -O3 -Wformat=2 -Wno-format-nonliteral -Wno-format-truncation -Wno-format-y2k")
-
 set(CONTRIB_DEPS_DOWNLOAD "${SDWL_CONTRIB_DIR}/deps-download/CMakeLists.txt")
 set(CONTRIB_TMP_FILE "${CMAKE_BINARY_DIR}/deps_tmp_CMakeLists.txt.in")
 
 set(CONTRIB_DEPS_HEADER "${SDWL_SUPPORT_DIR}/deps_header.cmake")
-cat(${CONTRIB_DEPS_HEADER} ${CONTRIB_TMP_FILE})
+configure_file(${CONTRIB_DEPS_HEADER} ${CONTRIB_TMP_FILE})
+
 cat("${SDWL_SUPPORT_DIR}/libuv.cmake" ${CONTRIB_TMP_FILE})
 
 # download dependencies
